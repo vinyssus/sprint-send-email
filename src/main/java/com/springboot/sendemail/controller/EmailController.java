@@ -1,5 +1,7 @@
 package com.springboot.sendemail.controller;
 
+import javax.mail.MessagingException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,7 +18,7 @@ public class EmailController {
 	 SeviceEmail se;
 
 	@PostMapping("/send-email")
-	public ResponseEntity<String> sendEmail(@RequestBody EmailMessage emailMessage) {
+	public ResponseEntity<String> sendEmail(@RequestBody EmailMessage emailMessage) throws MessagingException {
 		se.sendEmail(emailMessage.getTo(), emailMessage.getSubject(), emailMessage.getMessage(), emailMessage.getFile());
 		return ResponseEntity.ok("Succes");
 	}
