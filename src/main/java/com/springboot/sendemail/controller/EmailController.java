@@ -17,7 +17,7 @@ public class EmailController {
 
 	@PostMapping("/send-email")
 	public ResponseEntity<String> sendEmail(@RequestBody EmailMessage emailMessage) {
-		se.sendEmail(emailMessage.getTo(), emailMessage.getSubject(), emailMessage.getMessage());
+		se.sendEmail(emailMessage.getTo(), emailMessage.getSubject(), emailMessage.getMessage(), emailMessage.getFile());
 		return ResponseEntity.ok("Succes");
 	}
 }
